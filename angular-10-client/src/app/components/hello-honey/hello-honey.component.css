@@ -1,0 +1,11 @@
+.container {
+  display: flex;
+  justify-content: center;  /* Horizontal center */
+  align-items: center;      /* Vertical center */
+  height: 100vh;            /* Full viewport height */
+}
+.box {
+  width: 200px;
+  height: 100px;
+  
+}
