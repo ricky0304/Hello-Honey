@@ -8,17 +8,110 @@
 </head>
 <body>
     <div style="padding-top: 150px; width: auto; margin: auto;">
-        <div class="d-grid gap-3">
+
+      <div class="gap-3">
+        <div id="Round1" style="display: grid;">
           <h1 class="mx-auto ">Hello Honey :)</h1>
-          <h3 class="mx-auto" >Will You Be My Valentine?</h3>
+          <h3 class="mx-auto" >I Have A Question For You hehe</h3>
+          <img class="mx-auto" src="assets/images/img4.jpg" alt="cat with flowers (hehe i love you adri)" height="500px">
+          <button type="button" id="startbtn" class="btn btn-primary mx-auto" style="width: 10%; padding: 15px;" onclick="asking()"><h3>Ehm oke?</h3></button>
+        </div>
+      </div>
+    
+      <div class="gap-3">
+        <div id="Round2" style="display: none;">
+          <h1 class="mx-auto" >Will You Be My Valentine?</h1>
+          <h3 id="try2" class="mx-auto" style="display: none;" >Please?</h3>
+          <h3 id="try3" class="mx-auto" style="display: none;" >Pretty Please?</h3>
+          <h3 id="try4" class="mx-auto" style="display: none;" >Pretty Pretty Please?</h3>
+          
+
           <img class="mx-auto" src="assets/images/img1.jpg" alt="cat with flowers (hehe i love you adri)">
+
           <div class="mx-auto">
-            <button type="button" class="btn btn-success box mx-1">yes</button>
-            <button type="button" class="btn btn-danger box mx-1">no</button>
+            <button type="button" class="btn btn-success mx-1" onclick="WEMARRIED()">yes</button>
+            <button type="button" id="no1" class="btn btn-danger mx-1" onclick="yousure()">no</button>
+            <button type="button" id="no2" class="btn btn-danger mx-1" style="display: none;" onclick="but()">no</button>
           </div>
         </div>
       </div>
-      <audio controls autoplay src="assets/audio/Cults - Always Forever (Official Video).mp3" type="audio/mpeg">
-      </audio>
+    </div>
+
+    <div class="gap-3">
+      <div id="whyno" style="display: none;">
+        <h1 class="mx-auto" >Will You Be My Valentine?</h1>
+        <h3 id="whynotho" class="mx-auto" >But Why Not?</h3>
+        
+        <input type="text" id="input1" class="form-control mx-auto" style="width: 300px;">
+        <div class="invalid-feedback">Invalid reason</div>
+        <button type="button" id="reason" class="btn btn-danger mx-auto" style="width: auto;" onclick="wrong()">Send</button>
+
+        <img class="mx-auto" src="assets/images/img1.jpg" alt="cat with flowers (hehe i love you adri)">
+
+        <div class="mx-auto">
+          <button type="button" class="btn btn-success mx-1" onclick="WEMARRIED()">yes</button>
+          <button type="button" id="no1" class="btn btn-danger mx-1" onclick="yousure()">no</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <div class="gap-3">
+      <div id="Victory" style="display: none;">
+        <h1 class="mx-auto ">Yippieeee</h1>
+        <img class="mx-auto" src="assets/images/img3.jpg" alt="cat with flowers (hehe i love you adri)">
+      </div>
+    </div>
+
+  </div>
+
+  <audio src="assets/audio/Cults - Always Forever (Official Video).mp3#t=00:00:11" type="audio/mpeg" id="myAudio">
+  </audio>
+
 </body>
 </html>
+<script>
+  function asking() {
+    document.getElementById("Round1").style.display = "none";
+    document.getElementById("Round2").style.display = "grid";
+    
+    var audio = document.getElementById('myAudio');
+    //audio.play();
+  }
+  
+  function WEMARRIED() {
+    document.getElementById("Round2").style.display = "none";
+    document.getElementById("whyno").style.display = "none";
+    document.getElementById("Victory").style.display = "grid";
+  }
+  var tried = false;
+  function yousure() {
+    
+    if (tried) {
+      but();
+      return
+    }
+
+    if(document.getElementById("try2").style.display != "grid" && document.getElementById("try3").style.display != "grid"){
+      document.getElementById("try2").style.display = "grid";
+    }else if (document.getElementById("try2").style.display == "grid") {
+      document.getElementById("try2").style.display = "none";
+      document.getElementById("try3").style.display = "grid"
+    }else if (document.getElementById("try3").style.display == "grid"){
+      document.getElementById("try3").style.display = "none";
+      document.getElementById("try4").style.display = "grid"
+
+      tried = true
+    }
+  }
+
+  function but() {
+    document.getElementById("Round2").style.display = "none";
+    
+    document.getElementById("whyno").style.display = "grid";
+  }
+
+  function wrong(){
+    document.getElementById("input1").classList.add = "is-invalid";
+  }
+</script>
