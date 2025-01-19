@@ -53,15 +53,40 @@
         <img class="mx-auto row" src="assets/images/sad cat.jpeg" alt="Sad cat (hehe i love you adri)">
       </form>
 
+      <label id="mouseplacetext" for="mouseplace" class="circletext" style="display: none;">Put Your Mouse Here</label>
+      <div id="mouseplace" class="circle" style="display: none;"></div>
+
+      <div id="mazebox" class="mx-auto" style="display: none;">
+        <h1 class="mx-auto">Lets Try This Again</h1>
+        <h3 class="mx-auto">Will You Be My Valentine?</h3>
+        <div class="maze mx-auto">
+          <!-- Maze walls and paths -->
+          <div class="start">Start</div>
+          <div class="wall"></div><div class="wall"></div><div></div><div></div><div class="wall"></div><div class="wall"></div><div></div><div></div><div class="wall"></div>
+          <div></div><div></div><div></div><div class="wall"></div><div></div><div></div><div class="wall"></div><div class="wall"></div><div class="wall"></div><div></div>
+          <div class="wall"></div><div class="wall"></div><div></div><div></div><div class="wall"></div><div></div><div></div><div></div><div class="wall"></div><div class="wall"></div>
+          <div></div><div></div><div></div><div></div><div class="wall"></div><div></div><div class="wall"></div><div></div><div></div><div class="wall"></div>
+          <div class="wall"></div><div class="wall"></div><div class="wall"></div><div></div><div class="wall"></div><div></div><div></div><div></div><div class="wall"></div><div></div>
+          <div></div><div></div><div></div><div></div><div class="wall"></div><div class="wall"></div><div class="wall"></div><div></div><div></div><div></div>
+          <div class="wall"></div><div></div><div></div><div class="wall"></div><div></div><div></div><div class="wall"></div><div></div><div class="wall"></div><div></div>
+          <div></div><div></div><div></div><div></div><div class="wall"></div><div></div><div></div><div class="wall"></div><div class="wall"></div><div></div>
+          <div></div><div class="wall"></div><div></div><div class="wall"></div><div class="wall"></div><div></div><div></div><div></div><div></div><div class="wall"></div>
+          <div></div><button class="btn btn-success" onclick="WEMARRIED()">Yes</button><div class="wall"></div><div></div><div></div><div class="wall"></div><div></div><div></div><button class="btn btn-danger" onclick="wow()">No</button>
+        </div>
+      </div>
+
+      <div id="damn" class="container" style="display: none;">
+        <h1 class="mx-auto row">You Sneaky But God Damn Oke Denn Nid...</h1>
+        <img class="mx-auto row" src="assets/images/cat listening to emotional song.jpeg" alt="wtf...">
+      </div>
 
       <div id="Victory" class="container" style="display: none;">
         <h1 class="mx-auto row">Yippieeee</h1>
         <img class="mx-auto row" src="assets/images/give heart.jpg" alt="give heart (hehe i love you adri)">
       </div>
-    </div>
-
     
-    <audio src="assets/audio/Cults - Always Forever (Official Video).mp3#t=00:00:11" type="audio/mpeg" id="myAudio">
+    </div>
+      <audio src="assets/audio/Cults - Always Forever (Official Video).mp3#t=00:00:11" type="audio/mpeg" id="myAudio">
     </audio>
 </body>
 </html>
@@ -77,7 +102,55 @@
   function WEMARRIED() {
     document.getElementById("Round2").style.display = "none";
     document.getElementById("whyno").style.display = "none";
+    document.getElementById("mazebox").style.display = "none";
     document.getElementById("Victory").style.display = "grid";
+
+    // Number of circles in the collage
+    const circleCount = 4;
+    var x = 50; 
+    var y = 50;
+    let color;
+    
+    // Generate the collage
+    for (let i = 0; i < circleCount; i++) {
+      // Create a circle element
+      const circle = document.createElement("div");
+      circle.classList.add("circle");
+
+      // Random size, position, and color
+      const size = 450; // Circle size
+      if(i == 0){
+        //top left
+        x = x; 
+        y = y;
+        color = `green`; 
+      }else if(i == 1){
+        //bottom left
+        x = x + 200; 
+        y = 550;
+        color = `red`;
+      }else if(i == 2){
+        //top right
+        x = 1380; 
+        y = 50;
+        color = `yellow`;
+      }else if(i == 3){
+        //bottom right
+        x = 1180; 
+        y = 550;
+        color = `blue`;
+      }
+
+      // Apply styles to the circle
+      circle.style.width = `${size}px`;
+      circle.style.height = `${size}px`;
+      circle.style.backgroundColor = color;
+      circle.style.left = `${x}px`;
+      circle.style.top = `${y}px`;
+
+      // Add the circle to the body
+      document.body.appendChild(circle);
+    }
   }
   var tried = false;
   function yousure() {
@@ -129,11 +202,90 @@
     function well(){
       document.getElementById("whyno").style.display = "none";
 
-      document.getElementById("btn2").style.display = "grid";
+      let mouseX = window.outerWidth
+      let mouseY = window.outerHeight;
+
+      document.getElementById('mouseplace').style.display = "block";
+      document.getElementById('mouseplacetext').style.display = "block";
+
+
+      document.getElementById('mouseplace').addEventListener('mouseenter', () => {
+        startmaze();
+      });
     }
+
+    function wow(){
+      document.getElementById('mazebox').style.display = "none";
+      document.getElementById('damn').style.display = "grid";
+    }
+
+    function startmaze(){
+      document.getElementById('mazebox').style.display = "grid";
+      document.getElementById('mouseplacetext').style.display = "none";
+      document.getElementById('mouseplace').style.display = "none";
+    }
+
+    const maze = document.querySelector('.maze');
+    const walls = document.querySelectorAll('.wall');
+    const start = document.querySelector('.start');
+    const goal = document.querySelector('.goal');
+
+    // Reset game function
+    function resetGame() {
+      alert('You hit a wall! Try again.');
+    }
+
+    // Attach event listeners to walls
+    walls.forEach(wall => {
+      wall.addEventListener('mouseenter', resetGame);
+    });
+
+
 </script>
 <style>
   img{
     height: 500px;
+  }
+
+  .maze {
+    width: 500px;
+    height: 500px;
+    background-color: white;
+    border: 5px solid black;
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(10, 1fr);
+    gap: 1px;
+  }
+
+  .wall {
+    background-color: black;
+  }
+
+  .start {
+    background-color: blue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-weight: bold;
+  }
+
+  .circle {
+      position: absolute;
+      top: 150px; /* Distance from the top of the window */
+      left: 500px; /* Distance from the left of the window */
+      width: 50px; /* Circle's width */
+      height: 50px; /* Circle's height */
+      background-color: red; /* Circle's color */
+      border-radius: 50%; /* Makes it a circle */
+  }
+  .circletext{
+    position: absolute;
+    background-color: none;
+    top: 120px;
+    left: 450px;
+    width: 200px;
+    height: auto;
   }
 </style>

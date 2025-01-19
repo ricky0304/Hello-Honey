@@ -3,41 +3,69 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Show Invalid After Submit</title>
-  <link
-    href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
-    rel="stylesheet"
-  />
+  <title>Random Collage</title>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      background-color: #f0f0f0;
+      position: relative;
+    }
+
+    .circle {
+      position: absolute;
+      border-radius: 50%;
+    }
+  </style>
 </head>
 <body>
-  
-
-  <form id="whyno" class="container" novalidate>
-    <h1 class="mx-auto mb-4 row">But Why Not?</h1>
-    <div class="mx-auto  mb-2 row">
-      <input 
-      type="text" 
-      id="input1" 
-      class="form-control" 
-      style="width: 300px;">
-      <div class="invalid-feedback">
-        This input is invalid.
-      </div>
-      <button type="submit" class="btn btn-danger mx-2 col"><h4>Send</h4></button>
-    </div>
-    <img class="mx-auto" src="assets/images/sad cat.jpeg" alt="Sad cat (hehe i love you adri)">
-  </form>
-
   <script>
-    document.getElementById("whyno").addEventListener("submit", function (event) {
-      event.preventDefault(); // Prevent actual form submission
+    // Number of circles in the collage
+    const circleCount = 4;
+    var x = 50; 
+    var y = 50;
+    let color;
+    
+    // Generate the collage
+    for (let i = 0; i < circleCount; i++) {
+      // Create a circle element
+      const circle = document.createElement("div");
+      circle.classList.add("circle");
 
-      // Get the input field
-      const inputField = document.getElementById("input1");
+      // Random size, position, and color
+      const size = 450; // Circle size
+      if(i == 0){
+        //top left
+        x = x; 
+        y = y;
+        color = `green`; 
+      }else if(i == 1){
+        //bottom left
+        x = x + 200; 
+        y = 550;
+        color = `red`;
+      }else if(i == 2){
+        //top right
+        x = 1380; 
+        y = 50;
+        color = `yellow`;
+      }else if(i == 3){
+        //bottom right
+        x = 1180; 
+        y = 550;
+        color = `blue`;
+      }
 
-      // Add the 'is-invalid' class to the input field
-      inputField.classList.add("is-invalid");
-    });
+      // Apply styles to the circle
+      circle.style.width = `${size}px`;
+      circle.style.height = `${size}px`;
+      circle.style.backgroundColor = color;
+      circle.style.left = `${x}px`;
+      circle.style.top = `${y}px`;
+
+      // Add the circle to the body
+      document.body.appendChild(circle);
+    }
   </script>
 </body>
 </html>
