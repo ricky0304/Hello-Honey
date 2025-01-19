@@ -9,65 +9,59 @@
 <body>
     <div style="padding-top: 150px; width: auto; margin: auto;">
 
-      <div class="gap-3">
-        <div id="Round1" style="display: grid;">
-          <h1 class="mx-auto ">Hello Honey :)</h1>
-          <h3 class="mx-auto" >I Have A Question For You hehe</h3>
-          <img class="mx-auto" src="assets/images/img4.jpg" alt="cat with flowers (hehe i love you adri)" height="500px">
-          <button type="button" id="startbtn" class="btn btn-primary mx-auto" style="width: 10%; padding: 15px;" onclick="asking()"><h3>Ehm oke?</h3></button>
+      
+      <div id="Round1" class="container" style="display: grid;">
+        <h1 class="mx-auto row">Hello Honey :)</h1>
+        <h3 class="mx-auto row" >I Have A Question For You hehe</h3>
+        <img class="mx-auto row" src="assets/images/smol cat.jpg" alt="cat with flowers (hehe i love you adri)">
+        <button type="button" class="btn btn-primary mx-auto row" style="padding: 10px;" onclick="asking()"><h4>Ehm oke?</h4></button>
+      </div>
+      
+    
+      
+      <div id="Round2" class="container" style="display: none;">
+        <h1 class="mx-auto row">Will You Be My Valentine?</h1>
+        <h3 id="try2" class="mx-auto" style="display: none;" >Please?</h3>
+        <h3 id="try3" class="mx-auto" style="display: none;" >Pretty Please?</h3>
+        <h3 id="try4" class="mx-auto" style="display: none;" >Pretty Pretty Please?</h3>
+
+        <img class="mx-auto row" src="assets/images/flower cat.jpg" alt="cat with flowers (hehe i love you adri)">
+        <div class="mx-auto row">
+          <button type="button" class="btn btn-success mx-1 col" onclick="WEMARRIED()"><h4>Yes</h4></button>
+          <button type="button" class="btn btn-danger mx-1 col" onclick="yousure()"><h4>No</h4></button>
         </div>
       </div>
-    
-      <div class="gap-3">
-        <div id="Round2" style="display: none;">
-          <h1 class="mx-auto" >Will You Be My Valentine?</h1>
-          <h3 id="try2" class="mx-auto" style="display: none;" >Please?</h3>
-          <h3 id="try3" class="mx-auto" style="display: none;" >Pretty Please?</h3>
-          <h3 id="try4" class="mx-auto" style="display: none;" >Pretty Pretty Please?</h3>
+      
+
+      <form id="whyno" class="container"style="display: none;" novalidate>
+        <h1 class="mx-auto mb-4 row">But Why Not?</h1>
+        <div class="mx-auto mb-2 row">
+          <input 
+          type="text" 
+          id="input1" 
+          class="form-control"
+          style="width: auto;"
+          >
           
-
-          <img class="mx-auto" src="assets/images/img1.jpg" alt="cat with flowers (hehe i love you adri)">
-
-          <div class="mx-auto">
-            <button type="button" class="btn btn-success mx-1" onclick="WEMARRIED()">yes</button>
-            <button type="button" id="no1" class="btn btn-danger mx-1" onclick="yousure()">no</button>
-            <button type="button" id="no2" class="btn btn-danger mx-1" style="display: none;" onclick="but()">no</button>
+          <button type="submit" class="btn btn-danger mx-2" style="width: 100px;"><h4>Send</h4></button>
+          <div class="invalid-feedback row">
+            This awnser is invalid.
           </div>
         </div>
-      </div>
-    </div>
-
-    <div class="gap-3">
-      <div id="whyno" style="display: none;">
-        <h1 class="mx-auto" >Will You Be My Valentine?</h1>
-        <h3 id="whynotho" class="mx-auto" >But Why Not?</h3>
         
-        <input type="text" id="input1" class="form-control mx-auto" style="width: 300px;">
-        <div class="invalid-feedback">Invalid reason</div>
-        <button type="button" id="reason" class="btn btn-danger mx-auto" style="width: auto;" onclick="wrong()">Send</button>
+        <img class="mx-auto row" src="assets/images/sad cat.jpeg" alt="Sad cat (hehe i love you adri)">
+      </form>
 
-        <img class="mx-auto" src="assets/images/img1.jpg" alt="cat with flowers (hehe i love you adri)">
 
-        <div class="mx-auto">
-          <button type="button" class="btn btn-success mx-1" onclick="WEMARRIED()">yes</button>
-          <button type="button" id="no1" class="btn btn-danger mx-1" onclick="yousure()">no</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-    <div class="gap-3">
-      <div id="Victory" style="display: none;">
-        <h1 class="mx-auto ">Yippieeee</h1>
-        <img class="mx-auto" src="assets/images/img3.jpg" alt="cat with flowers (hehe i love you adri)">
+      <div id="Victory" class="container" style="display: none;">
+        <h1 class="mx-auto row">Yippieeee</h1>
+        <img class="mx-auto row" src="assets/images/give heart.jpg" alt="give heart (hehe i love you adri)">
       </div>
     </div>
 
-  </div>
-
-  <audio src="assets/audio/Cults - Always Forever (Official Video).mp3#t=00:00:11" type="audio/mpeg" id="myAudio">
-  </audio>
-
+    
+    <audio src="assets/audio/Cults - Always Forever (Official Video).mp3#t=00:00:11" type="audio/mpeg" id="myAudio">
+    </audio>
 </body>
 </html>
 <script>
@@ -114,4 +108,19 @@
   function wrong(){
     document.getElementById("input1").classList.add = "is-invalid";
   }
+
+  document.getElementById("whyno").addEventListener("submit", function (event) {
+      event.preventDefault(); // Prevent actual form submission
+
+      // Get the input field
+      const inputField = document.getElementById("input1");
+
+      // Add the 'is-invalid' class to the input field
+      inputField.classList.add("is-invalid");
+    });
 </script>
+<style>
+  img{
+    height: 500px;
+  }
+</style>
