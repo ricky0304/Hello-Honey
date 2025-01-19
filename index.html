@@ -35,15 +35,16 @@
 
       <form id="whyno" class="container"style="display: none;" novalidate>
         <h1 class="mx-auto mb-4 row">But Why Not?</h1>
-        <div class="mx-auto mb-2 row">
+        <div class="mx-auto mb-2 row" id="box">
           <input 
           type="text" 
           id="input1" 
-          class="form-control"
+          class="form-control col"
           style="width: auto;"
           >
           
-          <button type="submit" class="btn btn-danger mx-2" style="width: 100px;"><h4>Send</h4></button>
+          <button type="submit" class="btn btn-danger mx-2 col" style="width: 100px;" id="btn1" onclick="nuhuh()"><h4>Send</h4></button>
+          <button type="submit" class="btn btn-danger mx-2 col" style="width: 0; display: none; padding: 0px; padding-block: 6px;" id="btn2" onclick="well()"><h4>Yes it is</h4></button>
           <div class="invalid-feedback row">
             This awnser is invalid.
           </div>
@@ -118,6 +119,18 @@
       // Add the 'is-invalid' class to the input field
       inputField.classList.add("is-invalid");
     });
+
+    function nuhuh(){
+      document.getElementById("btn1").style.display = "none";
+    
+      document.getElementById("btn2").style.display = "grid";
+    }
+
+    function well(){
+      document.getElementById("whyno").style.display = "none";
+
+      document.getElementById("btn2").style.display = "grid";
+    }
 </script>
 <style>
   img{
