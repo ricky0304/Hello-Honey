@@ -103,53 +103,45 @@
     document.getElementById("Round2").style.display = "none";
     document.getElementById("whyno").style.display = "none";
     document.getElementById("mazebox").style.display = "none";
-    document.getElementById("Victory").style.display = "grid";
 
-    // Number of circles in the collage
-    const circleCount = 4;
-    var x = 50; 
-    var y = 50;
-    let color;
-    
-    // Generate the collage
-    for (let i = 0; i < circleCount; i++) {
-      // Create a circle element
-      const circle = document.createElement("div");
-      circle.classList.add("circle");
+    const victoryDiv = document.getElementById("Victory");
+    victoryDiv.style.display = "grid";
+    victoryDiv.style.position = "relative"; // Needed for absolute positioning
 
-      // Random size, position, and color
-      const size = 450; // Circle size
-      if(i == 0){
-        //top left
-        x = x; 
-        y = y;
-        color = `green`; 
-      }else if(i == 1){
-        //bottom left
-        x = x + 200; 
-        y = 550;
-        color = `red`;
-      }else if(i == 2){
-        //top right
-        x = 1380; 
-        y = 50;
-        color = `yellow`;
-      }else if(i == 3){
-        //bottom right
-        x = 1180; 
-        y = 550;
-        color = `blue`;
-      }
 
-      // Apply styles to the circle
-      circle.style.width = `${size}px`;
-      circle.style.height = `${size}px`;
-      circle.style.backgroundColor = color;
-      circle.style.left = `${x}px`;
-      circle.style.top = `${y}px`;
+    const circleCount = 7;
+    const container = document.body;
+    const imageUrls = [
+        'img1.jpg', 'img2.jpg', 'img3.jpg', 'otherimg4.jpg', 
+        'img5.jpg', 'img6.jpg', 'img7.jpg' 
+    ];
 
-      // Add the circle to the body
-      document.body.appendChild(circle);
+    // Shuffle images randomly
+    imageUrls.sort(() => Math.random() - 0.5);
+    const positions = [
+        { x: "-9vw", y: "10vh" }, { x: "15vw", y: "10vh" }, { x: "49vw", y: "10vh" }, { x: "67vw", y: "10vh" }, 
+        { x: "7.5vw", y: "50vh" }, { x: "35vw", y: "50vh" }, { x: "22.5vw", y: "70vh" }
+    ];
+
+      for (let i = 0; i < circleCount; i++) {
+        const circle = document.createElement("div");
+        circle.classList.add("circle");
+
+        const size = "12vw"; // Relative size for responsiveness
+        const { x, y } = positions[i];
+
+        circle.style.width = size;
+        circle.style.height = size;
+        circle.style.position = "absolute";
+        circle.style.left = x;
+        circle.style.top = y;
+        circle.style.borderRadius = "50%";
+        circle.style.overflow = "hidden";
+        circle.style.backgroundSize = "cover";
+        circle.style.backgroundPosition = "center";
+        circle.style.backgroundImage = `url(assets/images/honey/${imageUrls[i]})`;
+
+        victoryDiv.appendChild(circle);
     }
   }
   var tried = false;
@@ -271,21 +263,4 @@
     font-weight: bold;
   }
 
-  .circle {
-      position: absolute;
-      top: 150px; /* Distance from the top of the window */
-      left: 500px; /* Distance from the left of the window */
-      width: 50px; /* Circle's width */
-      height: 50px; /* Circle's height */
-      background-color: red; /* Circle's color */
-      border-radius: 50%; /* Makes it a circle */
-  }
-  .circletext{
-    position: absolute;
-    background-color: none;
-    top: 120px;
-    left: 450px;
-    width: 200px;
-    height: auto;
-  }
 </style>
