@@ -5,67 +5,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Random Collage</title>
   <style>
-    body {
-      margin: 0;
-      overflow: hidden;
-      background-color: #f0f0f0;
-      position: relative;
-    }
-
-    .circle {
-      position: absolute;
-      border-radius: 50%;
+    .col {
+      background-color: rgb(4, 0, 255);
     }
   </style>
 </head>
 <body>
+  <div style="padding-top: 150px; width: auto; margin: auto;">
+    <div class="row">
+      <div class="container">
+        <div class="col">1</div>
+        <div class="col">1</div>
+        <div class="col">1</div>
+        <div class="col">1</div>
+        <div class="col">1</div>
+        <div class="col">1</div>
+        <div class="col">1</div>
+        <div class="col">1</div>
+      </div>
+    </div>
+  </div>
   <script>
-    // Number of circles in the collage
-    const circleCount = 4;
-    var x = 50; 
-    var y = 50;
-    let color;
-    
-    // Generate the collage
-    for (let i = 0; i < circleCount; i++) {
-      // Create a circle element
-      const circle = document.createElement("div");
-      circle.classList.add("circle");
-
-      // Random size, position, and color
-      const size = 450; // Circle size
-      if(i == 0){
-        //top left
-        x = x; 
-        y = y;
-        color = `green`; 
-      }else if(i == 1){
-        //bottom left
-        x = x + 200; 
-        y = 550;
-        color = `red`;
-      }else if(i == 2){
-        //top right
-        x = 1380; 
-        y = 50;
-        color = `yellow`;
-      }else if(i == 3){
-        //bottom right
-        x = 1180; 
-        y = 550;
-        color = `blue`;
-      }
-
-      // Apply styles to the circle
-      circle.style.width = `${size}px`;
-      circle.style.height = `${size}px`;
-      circle.style.backgroundColor = color;
-      circle.style.left = `${x}px`;
-      circle.style.top = `${y}px`;
-
-      // Add the circle to the body
-      document.body.appendChild(circle);
-    }
+   
   </script>
 </body>
 </html>

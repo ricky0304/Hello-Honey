@@ -119,8 +119,9 @@
     // Shuffle images randomly
     imageUrls.sort(() => Math.random() - 0.5);
     const positions = [
-        { x: "-9vw", y: "10vh" }, { x: "15vw", y: "10vh" }, { x: "49vw", y: "10vh" }, { x: "67vw", y: "10vh" }, 
-        { x: "7.5vw", y: "50vh" }, { x: "35vw", y: "50vh" }, { x: "22.5vw", y: "70vh" }
+        { x: "-3vw", y: "10vh" }, { x: "12vw", y: "10vh" }, { x: "44vw", y: "10vh" }, { x: "59vw", y: "10vh" }, 
+        { x: "4.5vw", y: "40vh" }, { x: "51.5vw", y: "40vh" }, 
+        { x: "28vw", y: "50vh" }
     ];
 
       for (let i = 0; i < circleCount; i++) {
@@ -128,7 +129,7 @@
         circle.classList.add("circle");
 
         const size = "12vw"; // Relative size for responsiveness
-        const { x, y } = positions[i];
+        const { x , y } = positions[i];
 
         circle.style.width = size;
         circle.style.height = size;
