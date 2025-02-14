@@ -83,20 +83,6 @@
       <div id="Victory" class="container" style="display: none;">
         <h1 class="mx-auto row">Yippieeee</h1>
         <img class="mx-auto row" src="assets/images/give heart.jpg" alt="give heart (hehe i love you adri)">
-
-        <div class="row">
-          <img class="mx-auto col" id="circlePics" style="border-radius: 50%;">
-          <img class="mx-auto col" id="circlePics" style="border-radius: 50%;">
-          <img class="mx-auto col" id="circlePics" style="border-radius: 50%;">
-          <img class="mx-auto col" id="circlePics" style="border-radius: 50%;">
-        </div>
-        <div class="row">
-          <img class="mx-auto col" id="circlePics" style="border-radius: 50%;">
-          <img class="mx-auto col" id="circlePics" style="border-radius: 50%;">
-        </div>
-        <div class="row">
-          <img class="mx-auto col" id="circlePics" style="border-radius: 50%;">
-        </div>
       </div>
     
     </div>
@@ -120,6 +106,7 @@
 
     const victoryDiv = document.getElementById("Victory");
     victoryDiv.style.display = "grid";
+    victoryDiv.style.position = "relative"; // Needed for absolute positioning
 
 
     const circleCount = 7;
@@ -131,16 +118,25 @@
 
     // Shuffle images randomly
     imageUrls.sort(() => Math.random() - 0.5);
-    
+    const positions = [
+        { x: "-3vw", y: "10vh" }, { x: "12vw", y: "10vh" }, { x: "44vw", y: "10vh" }, { x: "59vw", y: "10vh" }, 
+        { x: "4.5vw", y: "40vh" }, { x: "51.5vw", y: "40vh" }, 
+        { x: "28vw", y: "50vh" }
+    ];
 
       for (let i = 0; i < circleCount; i++) {
-        const circle = document.getElementById("circlePics");
+        const circle = document.createElement("div");
+        circle.classList.add("circle");
 
         const size = "12vw"; // Relative size for responsiveness
+        const { x , y } = positions[i];
 
         circle.style.width = size;
         circle.style.height = size;
-      
+        circle.style.position = "absolute";
+        circle.style.left = x;
+        circle.style.top = y;
+        circle.style.borderRadius = "50%";
         circle.style.overflow = "hidden";
         circle.style.backgroundSize = "cover";
         circle.style.backgroundPosition = "center";
