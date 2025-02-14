@@ -7,7 +7,7 @@
     <title>Document</title>
 </head>
 <body>
-    <div style="padding-top: 150px; width: auto; margin: auto;">
+    <div style="padding-top: 15vh; width: auto; margin: auto;">
 
       
       <div id="Round1" class="container" style="display: grid;">
@@ -44,7 +44,7 @@
           >
           
           <button type="submit" class="btn btn-danger mx-2 col" style="width: 100px;" id="btn1" onclick="nuhuh()"><h4>Send</h4></button>
-          <button type="submit" class="btn btn-danger mx-2 col" style="width: 0; display: none; padding: 0px; padding-block: 6px;" id="btn2" onclick="well()"><h4>Yes it is</h4></button>
+          <button type="submit" class="btn btn-danger mx-2 col" style="width: 0; display: none; padding: 0px; padding-block: 6px;" id="btn2" onclick="well()"><h4>No it isn't</h4></button>
           <div class="invalid-feedback row">
             This awnser is invalid.
           </div>
@@ -119,8 +119,9 @@
 
     // Positionen in % für konsistente Platzierung unabhängig von Bildschirmgröße
     const positions = [
-        { x: "5%", y: "15%" }, { x: "25%", y: "15%" }, { x: "50%", y: "15%" }, { x: "75%", y: "15%" }, 
-        { x: "15%", y: "50%" }, { x: "60%", y: "50%" }, { x: "40%", y: "70%" }
+        { x: "7vw", y: "10vh" }, { x: "22vw", y: "10vh" }, { x: "54vw", y: "10vh" }, { x: "69vw", y: "10vh" }, 
+        { x: "14.5vw", y: "40vh" }, { x: "61.5vw", y: "40vh" }, 
+        { x: "38vw", y: "57vh" }
     ];
 
     // Vorhandene Kreise löschen (falls die Funktion mehrfach aufgerufen wird)
@@ -239,7 +240,7 @@
 </script>
 <style>
   img{
-    height: 500px;
+    height: 50vh;
   }
 
   .maze {
@@ -264,23 +265,5 @@
     align-items: center;
     color: white;
     font-weight: bold;
-  }
-
-  .circle {
-      position: absolute;
-      top: 150px; /* Distance from the top of the window */
-      left: 500px; /* Distance from the left of the window */
-      width: 50px; /* Circle's width */
-      height: 50px; /* Circle's height */
-      background-color: red; /* Circle's color */
-      border-radius: 50%; /* Makes it a circle */
-  }
-  .circletext{
-    position: absolute;
-    background-color: none;
-    top: 120px;
-    left: 450px;
-    width: 200px;
-    height: auto;
   }
 </style>
